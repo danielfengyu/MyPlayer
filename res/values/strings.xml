@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">轻播</string>
+    <string name="hello_world">Hello world!</string>
+	<string name="cont">内容：</string>
+	<string name="title">标题：</string>
+	<string name="time">时间：</string>
+	<string name="hello">我已经跳转</string>
+	<string name="action_settings">跳转</string>
+    <string name="Add">添加</string>
+    <string name="picture_title">图片名：</string>
+    <string name="show">显示图片</string>
+</resources>
