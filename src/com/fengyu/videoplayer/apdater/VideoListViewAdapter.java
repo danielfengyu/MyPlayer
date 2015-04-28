@@ -20,8 +20,10 @@ public class VideoListViewAdapter extends BaseAdapter {
 	List<VideoList> listVideos;
 	int local_postion = 0;
 	boolean imageChage = false;
+	//LayoutInflater作用是将layout的xml布局文件实例化为View类对象。
 	private LayoutInflater mLayoutInflater;
 	private ArrayList<LoadedImage> photos = new ArrayList<LoadedImage>();
+	//构造函数
 	public VideoListViewAdapter(Context context, List<VideoList> listVideos){
 		mLayoutInflater = LayoutInflater.from(context);
 		this.listVideos = listVideos;
@@ -56,13 +58,12 @@ public class VideoListViewAdapter extends BaseAdapter {
 		}else {
 			holder = (ViewHolder)convertView.getTag();
 		}
-			holder.title.setText(listVideos.get(position).getTitle());//ms
+			holder.title.setText(listVideos.get(position).getTitle());
 			long min = listVideos.get(position).getDuration() /1000 / 60;
 			long sec = listVideos.get(position).getDuration() /1000 % 60;
 			holder.time.setText(min+" : "+sec);
 			holder.img.setImageBitmap(photos.get(position).getBitmap());
-		
-		return convertView;
+			return convertView;
 	}
 
 	public final class ViewHolder{

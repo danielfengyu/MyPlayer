@@ -13,8 +13,9 @@ import com.fengyu.videoplayer.ui.VideoList;
  * 实现AbstructProvider接口，通过cursor来搜索视频的相关信息
  */
 public class VideoProvider implements AbstructProvider {
-private Context context;
-    
+     
+	private Context context;
+	
     public VideoProvider(Context context) {
         this.context = context;
     }

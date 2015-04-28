@@ -8,17 +8,14 @@
         android:id="@+id/video_img"
         android:contentDescription="@string/cont"
         />
-    <RelativeLayout 
-        android:layout_width="match_parent"
-	    android:layout_height="match_parent"
-	    android:layout_toRightOf="@id/video_img"
-	    android:layout_alignBottom="@id/video_img"
-        >
+
         <TextView 
 		    android:layout_width="match_parent"
 		    android:layout_height="wrap_content"
-		    android:id="@+id/video_title"
+		    android:id="@+id/video_title" 
 		    android:gravity="center"
+		    android:layout_toRightOf="@id/video_img" 
+		     android:layout_alignParentTop="true"
 		    android:layout_marginTop="5dp"
 		    android:text="@string/title"
 	    />
@@ -28,9 +25,9 @@
 		    android:layout_height="wrap_content"
 		    android:id="@+id/video_time"
 		    android:gravity="center"
+		    android:layout_toRightOf="@id/video_img"
 		    android:layout_alignParentBottom="true"
 		    android:layout_marginBottom="5dp"
-		    android:text="@string/time"
+		    android:text="@string/time"  
 	    />
-    </RelativeLayout>
 </RelativeLayout>

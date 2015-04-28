@@ -3,6 +3,8 @@ package com.fengyu.myplayer;
 import java.io.IOException;
 import java.util.List;
 
+import sysu.ss.xu.PlayerActivity;
+
 import com.fengyu.videoplayer.apdater.VideoListViewAdapter;
 import com.fengyu.videoplayer.ui.VideoList;
 import com.fengyu.videoplayer.utils.AbstructProvider;
@@ -12,6 +14,7 @@ import com.fengyu.videoplayer.utils.VideoProvider;
 import android.app.Activity;
 import android.app.TabActivity;
 import android.content.ContentResolver;
+import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Bitmap;
@@ -33,6 +36,7 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TabHost;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class ListActivity extends TabActivity {
 	private TabHost tabhost;
@@ -75,7 +79,8 @@ public class ListActivity extends TabActivity {
         tabhost.addTab(tab1);
         tabhost.addTab(tab2);
         tabhost.addTab(tab3);
-        init();
+        init();//初始化照片模块
+        
         instance = this;
 		AbstructProvider provider = new VideoProvider(instance);
         listVideos = provider.getList();
@@ -87,15 +92,15 @@ public class ListActivity extends TabActivity {
 			public void onItemClick(AdapterView<?> parent, View view, int position,  
                     long id) {  
 								Intent intent = new Intent();
-								intent.setClass(ListActivity.this, VideoPlayer.class);
+								intent.setClass(ListActivity.this, PlayerActivity.class);
 								Bundle bundle = new Bundle();
-								bundle.putSerializable("video", listVideos.get(position));
-								intent.putExtras(bundle);
+								//bundle.putSerializable("filepath", listVideos.get(position).getPath());
+								intent.putExtra("filepath", listVideos.get(position).getPath());
+								System.out.println(listVideos.get(position).getPath());
 								startActivity(intent);
 			}
 		});
 		loadImages();
-		 // init();
 	}
 	/**
 	 * Load images.
@@ -105,6 +110,7 @@ public class ListActivity extends TabActivity {
 		if (data == null) {
 			new LoadImagesFromSDCard().execute();
 		} else {
+			//
 			final LoadedImage[] photos = (LoadedImage[]) data;
 			if (photos.length == 0) {
 				new LoadImagesFromSDCard().execute();
@@ -114,7 +120,7 @@ public class ListActivity extends TabActivity {
 			}
 		}
 	}
-	private void addImage(LoadedImage... value) {
+	private void addImage(LoadedImage...value) {
 		for (LoadedImage image : value) {
 			myVideoListViewAdapter.addPhoto(image);
 			myVideoListViewAdapter.notifyDataSetChanged();
@@ -134,6 +140,7 @@ public class ListActivity extends TabActivity {
 
 		return list;
 	}
+	
 	/** 
 	    * 获取视频缩略图 
 	    * @param videoPath 
@@ -169,37 +176,25 @@ public class ListActivity extends TabActivity {
 	}
 	private void init() {
         // TODO Auto-generated method stub
-        
         addPic=(ImageButton) findViewById(R.id.btnClose);
         showPicPath=(ImageButton) findViewById(R.id.btnSend);
         imgPath=(TextView) findViewById(R.id.img_path);
         imgShow=(ImageView) findViewById(R.id.imgShow);
-        
         addPic.setOnClickListener(listener);
-        
         showPicPath.setOnClickListener(listener);
-        
     }
 private OnClickListener listener=new OnClickListener(){
-
     @Override
     public void onClick(View v) {
         // TODO Auto-generated method stub
-        
-        
         ImageButton btn=(ImageButton) v; 
-        
         switch(btn.getId()){
-        
         case R.id.btnClose:
             setImage();
-            break;
-            
-    case R.id.btnSend:
-        
-            break;
+            break;         
+        case R.id.btnSend:
+             break;
         }
-        
     }
 
     
@@ -207,16 +202,9 @@ private OnClickListener listener=new OnClickListener(){
     private void setImage() {
         // TODO Auto-generated method stub
          //使用intent调用系统提供的相册功能，使用startActivityForResult是为了获取用户选择的图片
-
-         
-
         Intent getAlbum = new Intent(Intent.ACTION_GET_CONTENT);
-
         getAlbum.setType(IMAGE_TYPE);
-
         startActivityForResult(getAlbum, IMAGE_CODE);
-        
-        
     }};
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
