@@ -27,7 +27,6 @@ public class PlayerActivity extends Activity {
 		setContentView(playerView);
 		playerView.setContext(this);
 		Bundle bundle = getIntent().getExtras();
-		System.out.println("PlayView"+bundle.getString("filepath"));
 		playerView.play(bundle.getString("filepath"));
 	}
 
@@ -73,8 +72,6 @@ class PlayerView extends View implements Runnable {
 			ff.prepareResources();
 
 			bitmap = Bitmap.createBitmap(displayWidth, displayHeight, Bitmap.Config.RGB_565);
-
-			/* �?启线�? */
 			new Thread(this).start();
 		}
 
@@ -101,8 +98,6 @@ class PlayerView extends View implements Runnable {
 				} catch (InterruptedException e) {
 					Thread.currentThread().interrupt();
 				}
-
-				// 使用 postInvalidate 可以直接在线程中更新界面
 				postInvalidate();
 			}
 		}

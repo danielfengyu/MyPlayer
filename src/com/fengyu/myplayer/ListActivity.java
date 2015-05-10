@@ -16,6 +16,7 @@ import android.app.TabActivity;
 import android.content.ContentResolver;
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.Resources;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
@@ -60,16 +61,15 @@ public class ListActivity extends TabActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
+        Resources res = getResources(); 
         //从TabActivity上面获取放置Tab的TabHost
         tabhost = getTabHost();
-
-        
         TabHost.TabSpec tab1 = tabhost.newTabSpec("one");
         tab1.setIndicator("视频");
         tab1.setContent(R.id.widget_layout_red);
         
         TabHost.TabSpec tab2 = tabhost.newTabSpec("two");
-        tab2.setIndicator("音乐");
+        tab2.setIndicator("音乐",res.getDrawable(R.drawable.item));
         tab2.setContent(R.id.widget_layout_yellow);
         
         TabHost.TabSpec tab3 = tabhost.newTabSpec("three");
@@ -79,8 +79,8 @@ public class ListActivity extends TabActivity {
         tabhost.addTab(tab1);
         tabhost.addTab(tab2);
         tabhost.addTab(tab3);
-        init();//初始化照片模块
-        
+        //pictrueCheck.init();//初始化照片模块
+        init();
         instance = this;
 		AbstructProvider provider = new VideoProvider(instance);
         listVideos = provider.getList();
@@ -94,7 +94,6 @@ public class ListActivity extends TabActivity {
 								Intent intent = new Intent();
 								intent.setClass(ListActivity.this, PlayerActivity.class);
 								Bundle bundle = new Bundle();
-								//bundle.putSerializable("filepath", listVideos.get(position).getPath());
 								intent.putExtra("filepath", listVideos.get(position).getPath());
 								System.out.println(listVideos.get(position).getPath());
 								startActivity(intent);
@@ -156,6 +155,11 @@ public class ListActivity extends TabActivity {
 	    return bitmap;  
 	   }  
 
+	   /**
+	    * 
+	    * @author fengyu
+	    *
+	    */
 	class LoadImagesFromSDCard extends AsyncTask<Object, LoadedImage, Object> {
 		@Override
 		protected Object doInBackground(Object... params) {
@@ -174,6 +178,7 @@ public class ListActivity extends TabActivity {
 			addImage(value);
 		}
 	}
+
 	private void init() {
         // TODO Auto-generated method stub
         addPic=(ImageButton) findViewById(R.id.btnClose);
