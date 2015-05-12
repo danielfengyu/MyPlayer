@@ -12,4 +12,9 @@
     <string name="picture_title">图片名：</string>
     <string name="show">显示图片</string>
     <string name="playButton">OK</string>
+	<string name="no_music">手机和SDCARD中都没有发现音频文件</string>
+    <string name="stop">停止</string>
+    <string name="play">播放</string>
+    <string name="pause">暂停</string>
+    <string name="click_to_play">请选择要播放的音频文件</string>
 </resources>

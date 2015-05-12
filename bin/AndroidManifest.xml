@@ -11,15 +11,20 @@
     <uses-sdk
         android:minSdkVersion="8"
         android:targetSdkVersion="21" />
+    
+   
 
     <application
         android:allowBackup="true"
-        android:icon="@drawable/ic_launcher"
+        android:icon="@drawable/icon"
         android:label="@string/app_name"
-        android:theme="@style/AppTheme" >
+        android:theme="@style/AppTheme"
+         android:name="com.fengyu.musicplayer.MusicPlayerApp"
+         >
         <activity
             android:name=".ListActivity"
-            android:label="@string/app_name" >
+            android:label="@string/app_name" 
+            android:theme="@android:style/Theme.NoTitleBar" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -29,6 +34,14 @@
         <activity android:name="sysu.ss.xu.PlayerActivity"
             android:theme="@android:style/Theme.NoTitleBar" >
         </activity>
+        
+        <activity android:name="com.fengyu.musicplayer.MusicList"/>
+        
+        <activity 
+             android:name="com.fengyu.musicui.MusicPlayActivity"
+             android:theme="@android:style/Theme.NoTitleBar" />
+        
+        <service android:name="com.fengyu.musicplayer.MusicPlayerService" android:exported="true" />  
     </application>
 
 </manifest>

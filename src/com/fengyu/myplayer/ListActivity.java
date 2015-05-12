@@ -5,6 +5,7 @@ import java.util.List;
 
 import sysu.ss.xu.PlayerActivity;
 
+import com.fengyu.musicplayer.MusicList;
 import com.fengyu.videoplayer.apdater.VideoListViewAdapter;
 import com.fengyu.videoplayer.ui.VideoList;
 import com.fengyu.videoplayer.utils.AbstructProvider;
@@ -36,6 +37,7 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TabHost;
+import android.widget.TabHost.TabSpec;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -46,18 +48,8 @@ public class ListActivity extends TabActivity {
 	VideoListViewAdapter myVideoListViewAdapter;//listVideos包含了本地所有的视频的相关信息
 	List<VideoList> listVideos;
 	int videoSize;
-	
-	private final String IMAGE_TYPE = "image/*";
-
-    private final int IMAGE_CODE = 0;   //这里的IMAGE_CODE是自己任意定义的
-    
-    private ImageButton addPic=null,showPicPath=null;
-    
-    private ImageView imgShow=null;
-    
-    private TextView imgPath=null;
-    
-    @Override
+    @SuppressWarnings("deprecation")
+	@Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
@@ -65,22 +57,24 @@ public class ListActivity extends TabActivity {
         //从TabActivity上面获取放置Tab的TabHost
         tabhost = getTabHost();
         TabHost.TabSpec tab1 = tabhost.newTabSpec("one");
-        tab1.setIndicator("视频");
-        tab1.setContent(R.id.widget_layout_red);
-        
-        TabHost.TabSpec tab2 = tabhost.newTabSpec("two");
-        tab2.setIndicator("音乐",res.getDrawable(R.drawable.item));
-        tab2.setContent(R.id.widget_layout_yellow);
+        tab1.setIndicator("视频",res.getDrawable(R.drawable.video));
+        tab1.setContent(R.id.widget_video);
+        Intent intent;
+        TabHost.TabSpec tab2;
+        intent=new Intent(this,MusicList.class);
+        tab2=tabhost.newTabSpec("tab2")//新建一个tab
+                .setIndicator("音乐",res.getDrawable(R.drawable.music))//设置名称及图标
+                .setContent(intent);//设置显示的intent
+ 
         
         TabHost.TabSpec tab3 = tabhost.newTabSpec("three");
-        tab3.setIndicator("图片");
+        tab3.setIndicator("图片",res.getDrawable(R.drawable.picture));
         tab3.setContent(R.id.widget_layout_white);
         
         tabhost.addTab(tab1);
-        tabhost.addTab(tab2);
+
+        tabhost.addTab(tab2);//添加进tabHost
         tabhost.addTab(tab3);
-        //pictrueCheck.init();//初始化照片模块
-        init();
         instance = this;
 		AbstructProvider provider = new VideoProvider(instance);
         listVideos = provider.getList();
@@ -95,7 +89,6 @@ public class ListActivity extends TabActivity {
 								intent.setClass(ListActivity.this, PlayerActivity.class);
 								Bundle bundle = new Bundle();
 								intent.putExtra("filepath", listVideos.get(position).getPath());
-								System.out.println(listVideos.get(position).getPath());
 								startActivity(intent);
 			}
 		});
@@ -178,114 +171,4 @@ public class ListActivity extends TabActivity {
 			addImage(value);
 		}
 	}
-
-	private void init() {
-        // TODO Auto-generated method stub
-        addPic=(ImageButton) findViewById(R.id.btnClose);
-        showPicPath=(ImageButton) findViewById(R.id.btnSend);
-        imgPath=(TextView) findViewById(R.id.img_path);
-        imgShow=(ImageView) findViewById(R.id.imgShow);
-        addPic.setOnClickListener(listener);
-        showPicPath.setOnClickListener(listener);
-    }
-private OnClickListener listener=new OnClickListener(){
-    @Override
-    public void onClick(View v) {
-        // TODO Auto-generated method stub
-        ImageButton btn=(ImageButton) v; 
-        switch(btn.getId()){
-        case R.id.btnClose:
-            setImage();
-            break;         
-        case R.id.btnSend:
-             break;
-        }
-    }
-
-    
-
-    private void setImage() {
-        // TODO Auto-generated method stub
-         //使用intent调用系统提供的相册功能，使用startActivityForResult是为了获取用户选择的图片
-        Intent getAlbum = new Intent(Intent.ACTION_GET_CONTENT);
-        getAlbum.setType(IMAGE_TYPE);
-        startActivityForResult(getAlbum, IMAGE_CODE);
-    }};
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-       // getMenuInflater().inflate(R.menu.picture, menu);
-        return false;
-    }
-    
-     protected void onActivityResult(int requestCode, int resultCode, Intent data){
-
-            if (resultCode != RESULT_OK) {        //此处的 RESULT_OK 是系统自定义得一个常量
-
-                Log.e("TAG->onresult","ActivityResult resultCode error");
-
-                return;
-
-            }
-
-         
-
-            Bitmap bm = null;
-
-         
-
-            //外界的程序访问ContentProvider所提供数据 可以通过ContentResolver接口
-
-            ContentResolver resolver = getContentResolver();
-
-         
-
-            //此处的用于判断接收的Activity是不是你想要的那个
-
-            if (requestCode == IMAGE_CODE) {
-
-                try {
-
-                    Uri originalUri = data.getData();        //获得图片的uri 
-
-         
-
-                    bm = MediaStore.Images.Media.getBitmap(resolver, originalUri);        
-                    //显得到bitmap图片
-                    imgShow.setImageBitmap(bm);
-                    
-
-//    这里开始的第二部分，获取图片的路径：
-
-         
-
-                    String[] proj = {MediaStore.Images.Media.DATA};
-
-         
-
-                    //好像是android多媒体数据库的封装接口，具体的看Android文档
-
-                    Cursor cursor = managedQuery(originalUri, proj, null, null, null); 
-
-                    //按我个人理解 这个是获得用户选择的图片的索引值
-
-                    int column_index = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
-
-                    //将光标移至开头 ，这个很重要，不小心很容易引起越界
-
-                    cursor.moveToFirst();
-
-                    //最后根据索引值获取图片路径
-
-                    String path = cursor.getString(column_index);
-                    //System.out.println(path);
-                    imgPath.setText(path);
-                }catch (IOException e) {
-
-                    Log.e("TAG-->Error",e.toString()); 
-
-                }
-
-            }
-
-        }
 }
