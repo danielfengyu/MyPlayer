@@ -62,7 +62,7 @@ public class MusicPlayActivity extends Activity {
 	        mPreviousButton = (ImageButton) findViewById(R.id.play_previous);
 	        mNextButton = (ImageButton) findViewById(R.id.play_next);
 	        mTextMusicInfo=(TextView) findViewById(R.id.music_info);
-	       mTextTime=(TextView) findViewById(R.id.text_time);
+	        mTextTime=(TextView) findViewById(R.id.text_time);
 	        String url,musicinfo;
 	        long duration;
 	        Bundle bundle;

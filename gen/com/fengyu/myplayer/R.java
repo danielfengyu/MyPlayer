@@ -1084,20 +1084,21 @@ containing a value of this type.
         public static final int friends_sends_pictures_no=0x7f02005a;
         public static final int friends_sends_pictures_select_icon_selected=0x7f02005b;
         public static final int friends_sends_pictures_select_icon_unselected=0x7f02005c;
-        public static final int icon=0x7f02005d;
-        public static final int music=0x7f02005e;
-        public static final int music_disk=0x7f02005f;
-        public static final int music_play_next=0x7f020060;
-        public static final int music_play_pause=0x7f020061;
-        public static final int music_play_play=0x7f020062;
-        public static final int music_play_previous=0x7f020063;
-        public static final int music_play_stop=0x7f020064;
-        public static final int photograph=0x7f020065;
-        public static final int picture=0x7f020066;
-        public static final int pictures_select_icon=0x7f020067;
-        public static final int run_plan=0x7f020068;
-        public static final int take_picture_default=0x7f020069;
-        public static final int video=0x7f02006a;
+        public static final int goto_play_view=0x7f02005d;
+        public static final int icon=0x7f02005e;
+        public static final int music=0x7f02005f;
+        public static final int music_disk=0x7f020060;
+        public static final int music_play_next=0x7f020061;
+        public static final int music_play_pause=0x7f020062;
+        public static final int music_play_play=0x7f020063;
+        public static final int music_play_previous=0x7f020064;
+        public static final int music_play_stop=0x7f020065;
+        public static final int photograph=0x7f020066;
+        public static final int picture=0x7f020067;
+        public static final int pictures_select_icon=0x7f020068;
+        public static final int run_plan=0x7f020069;
+        public static final int take_picture_default=0x7f02006a;
+        public static final int video=0x7f02006b;
     }
     public static final class id {
         public static final int action_bar=0x7f09001c;

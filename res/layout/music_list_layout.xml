@@ -11,14 +11,21 @@ android:background="@drawable/bg"
         android:orientation="horizontal" 
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
+        android:background="#0f111111"
         >
-        
-<TextView android:id="@+id/show_text"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:textSize="20sp"
-        android:text="@string/click_to_play"/>
-
+		<TextView 
+		    	android:id="@+id/show_text"
+		        android:layout_width="fill_parent"
+		        android:layout_height="wrap_content"
+		        android:textSize="20sp"
+		        android:text="@string/click_to_play"/>
+		<!--  
+		<ImageButton 
+		    android:id="@+id/goto_play_view"
+		    android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+		    android:src="@drawable/goto_play_view" 
+		    android:layout_alignParentRight="true"/>-->
 </RelativeLayout>
 
 

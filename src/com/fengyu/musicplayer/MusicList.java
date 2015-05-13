@@ -16,6 +16,8 @@ import android.os.IBinder;
 import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ImageButton;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.TabHost;
@@ -30,7 +32,7 @@ public class MusicList extends ListActivity
     public static MusicPlayerService mMusicPlayerService = null;
     private MusicInfoController mMusicInfoController = null;
     private TextView mTextView = null;
-    
+   // private ImageButton mGotoBtn;
     private ServiceConnection mPlaybackConnection = new ServiceConnection() 
     {
         public void onServiceConnected(ComponentName className, IBinder service) 
@@ -61,7 +63,18 @@ public class MusicList extends ListActivity
         this.getApplicationContext().bindService(new Intent(this,MusicPlayerService.class), 
         mPlaybackConnection, Context.BIND_AUTO_CREATE);
         mTextView = (TextView)findViewById(R.id.show_text);
-        
+//        mGotoBtn=(ImageButton)findViewById(R.id.goto_play_view);
+//        
+//        mGotoBtn.setOnClickListener(new OnClickListener() {
+//			
+//			@Override
+//			public void onClick(View v) {
+//				// TODO Auto-generated method stub
+//				Intent intent1;
+//				intent1=new Intent(MusicList.this,MusicPlayActivity.class);
+//				startActivity(intent1);
+//			}
+//		});
     }
 
     protected void onResume() {
