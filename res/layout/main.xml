@@ -39,23 +39,11 @@
 										android:layout_width="match_parent"
 										android:layout_height="match_parent"
 										android:layout_alignParentBottom="true"
-										android:id="@+id/jievideolistfile"
+										android:id="@+id/videolistfile"
 									/>
 									
 						</RelativeLayout>
 			</LinearLayout>
-			
-		
-         	<!--图片模块界面  -->
-	         <LinearLayout 
-	            android:layout_width="match_parent"
-	            android:layout_height="match_parent"
-	            android:id="@+id/widget_layout_white"
-	            android:background="#ffffff"
-	            android:orientation="vertical"
-	            >
-	   			
-	            </LinearLayout>
     </FrameLayout>
 </LinearLayout>
 </TabHost>

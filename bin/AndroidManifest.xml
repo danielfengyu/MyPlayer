@@ -40,7 +40,11 @@
         <activity 
              android:name="com.fengyu.musicui.MusicPlayActivity"
              android:theme="@android:style/Theme.NoTitleBar" />
-        
+         <activity
+              android:name="com.fengyu.mypicture.ShowImageActivity"
+              android:theme="@android:style/Theme.NoTitleBar"/>
+         <activity android:name="com.fengyu.mypicture.MainActivity"/>
+         
         <service android:name="com.fengyu.musicplayer.MusicPlayerService" android:exported="true" />  
     </application>
 

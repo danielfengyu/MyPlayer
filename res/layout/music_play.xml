@@ -1,0 +1,81 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#90fffff0"
+    tools:context="com.fengyu.musicui.MusicPlayActivity" >
+
+    <LinearLayout 
+        android:id="@+id/muisc_info_linearlayout"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_alignParentTop="true"
+        android:background="#0f111111"
+        >
+        <TextView 
+            android:id="@+id/music_info"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:textColor="@color/red"
+            android:textSize="20sp"
+            />
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/linearLayout1"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="#0f111111" >
+        <ImageButton
+            android:id="@+id/play_pause_btn"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="#0f111111"
+            android:layout_marginLeft="0dp"/>
+        
+        <ImageButton
+            android:id="@+id/play_previous"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="#0f111111"
+            android:src="@drawable/music_play_previous"
+            android:layout_marginLeft="10dp"/>"
+        
+        <TextView 
+            android:id="@+id/text_time"
+            android:layout_width="100dp"
+            android:layout_height="50dp"
+            android:layout_marginLeft="20dp"
+            android:gravity="center"
+            android:textColor="@color/red"
+            android:textSize="20sp"
+            />
+        
+        <ImageButton
+            android:id="@+id/play_next"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="#0f111111"
+            android:src="@drawable/music_play_next" 
+            android:layout_marginLeft="20dp"/>
+
+        <ImageButton
+            android:id="@+id/play_stop_btn"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="#0f111111"
+            android:src="@drawable/music_play_stop"
+            android:layout_marginLeft="10dp" />
+    </LinearLayout>
+
+    <com.fengyu.musicplayer.utils.Circleview
+        android:id="@+id/view"
+        android:layout_width="360dp"
+        android:layout_height="360dp"
+        android:layout_above="@+id/linearLayout1"
+        android:layout_alignParentLeft="true"
+        android:layout_marginBottom="80dp"
+        android:background="@drawable/music_disk" />
+
+</RelativeLayout>

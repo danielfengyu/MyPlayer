@@ -56,20 +56,23 @@ public class ListActivity extends TabActivity {
         Resources res = getResources(); 
         //从TabActivity上面获取放置Tab的TabHost
         tabhost = getTabHost();
-        TabHost.TabSpec tab1 = tabhost.newTabSpec("one");
+        TabHost.TabSpec tab1 = tabhost.newTabSpec("tab1");
         tab1.setIndicator("视频",res.getDrawable(R.drawable.video));
         tab1.setContent(R.id.widget_video);
-        Intent intent;
+        
+        Intent intentMusic;
         TabHost.TabSpec tab2;
-        intent=new Intent(this,MusicList.class);
+        intentMusic=new Intent(this,MusicList.class);
         tab2=tabhost.newTabSpec("tab2")//新建一个tab
                 .setIndicator("音乐",res.getDrawable(R.drawable.music))//设置名称及图标
-                .setContent(intent);//设置显示的intent
+                .setContent(intentMusic);//设置显示的intent
  
-        
-        TabHost.TabSpec tab3 = tabhost.newTabSpec("three");
+        Intent intentImage;
+        TabHost.TabSpec tab3 ;
+        intentImage =new Intent(this,com.fengyu.mypicture.MainActivity.class);
+        tab3=tabhost.newTabSpec("tab3");
         tab3.setIndicator("图片",res.getDrawable(R.drawable.picture));
-        tab3.setContent(R.id.widget_layout_white);
+        tab3.setContent(intentImage);
         
         tabhost.addTab(tab1);
 
@@ -80,7 +83,7 @@ public class ListActivity extends TabActivity {
         listVideos = provider.getList();
         videoSize = listVideos.size();
 		myVideoListViewAdapter = new VideoListViewAdapter(this, listVideos);
-		myVideoListView = (ListView)findViewById(R.id.jievideolistfile);
+		myVideoListView = (ListView)findViewById(R.id.videolistfile);
 		myVideoListView.setAdapter(myVideoListViewAdapter);
 		myVideoListView.setOnItemClickListener(new OnItemClickListener() {
 			public void onItemClick(AdapterView<?> parent, View view, int position,  

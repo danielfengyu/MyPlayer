@@ -50,7 +50,7 @@ public class VideoListViewAdapter extends BaseAdapter {
 		ViewHolder holder = null;
 		if (convertView == null) {
 			holder = new ViewHolder();
-			convertView = mLayoutInflater.inflate(R.layout.listview, null);
+			convertView = mLayoutInflater.inflate(R.layout.video_listview, null);
 			holder.img = (ImageView)convertView.findViewById(R.id.video_img);
 			holder.title = (TextView)convertView.findViewById(R.id.video_title);
 			holder.time = (TextView)convertView.findViewById(R.id.video_time);

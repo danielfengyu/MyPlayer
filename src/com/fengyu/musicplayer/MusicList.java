@@ -30,7 +30,7 @@ public class MusicList extends ListActivity
     public static MusicPlayerService mMusicPlayerService = null;
     private MusicInfoController mMusicInfoController = null;
     private TextView mTextView = null;
-
+    
     private ServiceConnection mPlaybackConnection = new ServiceConnection() 
     {
         public void onServiceConnected(ComponentName className, IBinder service) 
@@ -46,7 +46,7 @@ public class MusicList extends ListActivity
     
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.list_layout);
+        setContentView(R.layout.music_list_layout);
         
         MusicPlayerApp musicPlayerApp=(MusicPlayerApp)getApplication();
         mMusicInfoController = (musicPlayerApp).getMusicInfoController();
@@ -86,6 +86,16 @@ public class MusicList extends ListActivity
         String url = mCursor
                        .getString(mCursor
                             .getColumnIndexOrThrow(MediaStore.Audio.Media.DATA));
+        String musicInfo=mCursor
+        		.getString(mCursor
+        				.getColumnIndexOrThrow(MediaStore.Audio.Media.TITLE))+"\n"+
+        		mCursor.getString(mCursor
+        				.getColumnIndexOrThrow(MediaStore.Audio.Media.ARTIST));
+        
+        long duration = mCursor.getInt(mCursor.getColumnIndexOrThrow(MediaStore.Audio.Media.DURATION));
+        intent.putExtra("duration", duration);
+        intent.putExtra("musicinfo", musicInfo);
+        Log.i("fengyu","MusicList"+musicInfo);
 		intent.putExtra("filepath", url);
         this.startActivity(intent);
     }

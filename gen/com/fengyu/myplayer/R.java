@@ -858,10 +858,11 @@ containing a value of this type.
         public static final int abc_split_action_bar_is_narrow=0x7f050002;
     }
     public static final class color {
-        public static final int abc_search_url_text_holo=0x7f060003;
+        public static final int abc_search_url_text_holo=0x7f060004;
         public static final int abc_search_url_text_normal=0x7f060000;
         public static final int abc_search_url_text_pressed=0x7f060002;
         public static final int abc_search_url_text_selected=0x7f060001;
+        public static final int red=0x7f060003;
     }
     public static final class dimen {
         /**  Default height of an action bar. 
@@ -1077,19 +1078,26 @@ containing a value of this type.
         public static final int abc_textfield_searchview_holo_light=0x7f020054;
         public static final int abc_textfield_searchview_right_holo_dark=0x7f020055;
         public static final int abc_textfield_searchview_right_holo_light=0x7f020056;
-        public static final int bg=0x7f020057;
-        public static final int icon=0x7f020058;
-        public static final int music=0x7f020059;
-        public static final int music_disk=0x7f02005a;
-        public static final int music_play_next=0x7f02005b;
-        public static final int music_play_pause=0x7f02005c;
-        public static final int music_play_play=0x7f02005d;
-        public static final int music_play_previous=0x7f02005e;
-        public static final int music_play_stop=0x7f02005f;
-        public static final int picture=0x7f020060;
-        public static final int run_plan=0x7f020061;
-        public static final int run_plan2=0x7f020062;
-        public static final int video=0x7f020063;
+        public static final int albums_bg=0x7f020057;
+        public static final int albums_icon_bg=0x7f020058;
+        public static final int bg=0x7f020059;
+        public static final int friends_sends_pictures_no=0x7f02005a;
+        public static final int friends_sends_pictures_select_icon_selected=0x7f02005b;
+        public static final int friends_sends_pictures_select_icon_unselected=0x7f02005c;
+        public static final int icon=0x7f02005d;
+        public static final int music=0x7f02005e;
+        public static final int music_disk=0x7f02005f;
+        public static final int music_play_next=0x7f020060;
+        public static final int music_play_pause=0x7f020061;
+        public static final int music_play_play=0x7f020062;
+        public static final int music_play_previous=0x7f020063;
+        public static final int music_play_stop=0x7f020064;
+        public static final int photograph=0x7f020065;
+        public static final int picture=0x7f020066;
+        public static final int pictures_select_icon=0x7f020067;
+        public static final int run_plan=0x7f020068;
+        public static final int take_picture_default=0x7f020069;
+        public static final int video=0x7f02006a;
     }
     public static final class id {
         public static final int action_bar=0x7f09001c;
@@ -1103,13 +1111,17 @@ containing a value of this type.
         public static final int action_menu_divider=0x7f090002;
         public static final int action_menu_presenter=0x7f090003;
         public static final int action_mode_close_button=0x7f090024;
-        public static final int action_settings=0x7f09004d;
+        public static final int action_settings=0x7f090059;
         public static final int activity_chooser_view_content=0x7f090025;
         public static final int always=0x7f09000f;
         public static final int beginning=0x7f090016;
+        public static final int button2=0x7f090053;
         public static final int checkbox=0x7f09002d;
+        public static final int child_checkbox=0x7f09004c;
+        public static final int child_grid=0x7f090054;
+        public static final int child_image=0x7f09004b;
         public static final int collapseActionView=0x7f090010;
-        public static final int control_panel=0x7f09003e;
+        public static final int control_panel=0x7f09003f;
         public static final int default_activity_button=0x7f090028;
         public static final int dialog=0x7f090014;
         public static final int disableHome=0x7f090009;
@@ -1118,24 +1130,31 @@ containing a value of this type.
         public static final int end=0x7f090017;
         public static final int expand_activities_button=0x7f090026;
         public static final int expanded_menu=0x7f09002c;
-        public static final int fileView=0x7f09003c;
+        public static final int fileView=0x7f090058;
+        public static final int framelayout=0x7f09004a;
+        public static final int group_count=0x7f09004e;
+        public static final int group_image=0x7f09004d;
+        public static final int group_title=0x7f09004f;
         public static final int home=0x7f090000;
         public static final int homeAsUp=0x7f09000a;
         public static final int icon=0x7f09002a;
         public static final int ifRoom=0x7f090011;
         public static final int image=0x7f090027;
-        public static final int jievideolistfile=0x7f090044;
-        public static final int linearLayout1=0x7f090046;
+        public static final int imageView1=0x7f090052;
+        public static final int linearLayout1=0x7f090043;
         public static final int listMode=0x7f090006;
         public static final int list_item=0x7f090029;
+        public static final int main_grid=0x7f090050;
         public static final int middle=0x7f090018;
+        public static final int muisc_info_linearlayout=0x7f090041;
+        public static final int music_info=0x7f090042;
         public static final int never=0x7f090012;
         public static final int none=0x7f090019;
         public static final int normal=0x7f090007;
-        public static final int play_next=0x7f09004a;
-        public static final int play_pause_btn=0x7f090047;
-        public static final int play_previous=0x7f090048;
-        public static final int play_stop_btn=0x7f09004b;
+        public static final int play_next=0x7f090047;
+        public static final int play_pause_btn=0x7f090044;
+        public static final int play_previous=0x7f090045;
+        public static final int play_stop_btn=0x7f090048;
         public static final int progress_circular=0x7f090004;
         public static final int progress_horizontal=0x7f090005;
         public static final int radio=0x7f09002f;
@@ -1153,22 +1172,23 @@ containing a value of this type.
         public static final int showCustom=0x7f09000b;
         public static final int showHome=0x7f09000c;
         public static final int showTitle=0x7f09000d;
-        public static final int show_text=0x7f09003f;
+        public static final int show_text=0x7f090040;
         public static final int split_action_bar=0x7f09001e;
         public static final int submit_area=0x7f090039;
         public static final int tabMode=0x7f090008;
-        public static final int text_time=0x7f090049;
+        public static final int take_picture_linearlayout=0x7f090051;
+        public static final int text_time=0x7f090046;
         public static final int title=0x7f09002b;
         public static final int top_action_bar=0x7f090020;
         public static final int up=0x7f090021;
         public static final int useLogo=0x7f09000e;
-        public static final int video_img=0x7f090040;
-        public static final int video_time=0x7f090042;
-        public static final int video_title=0x7f090041;
-        public static final int view=0x7f09004c;
-        public static final int widget1=0x7f09003d;
-        public static final int widget_layout_white=0x7f090045;
-        public static final int widget_video=0x7f090043;
+        public static final int video_img=0x7f090055;
+        public static final int video_time=0x7f090057;
+        public static final int video_title=0x7f090056;
+        public static final int videolistfile=0x7f09003d;
+        public static final int view=0x7f090049;
+        public static final int widget1=0x7f09003e;
+        public static final int widget_video=0x7f09003c;
         public static final int withText=0x7f090013;
     }
     public static final class integer {
@@ -1221,13 +1241,18 @@ containing a value of this type.
         public static final int abc_search_dropdown_item_icons_2line=0x7f030015;
         public static final int abc_search_view=0x7f030016;
         public static final int abc_simple_decor=0x7f030017;
-        public static final int file=0x7f030018;
-        public static final int list_layout=0x7f030019;
-        public static final int listview=0x7f03001a;
-        public static final int main=0x7f03001b;
-        public static final int musicplay=0x7f03001c;
-        public static final int my_activity_list=0x7f03001d;
-        public static final int support_simple_spinner_dropdown_item=0x7f03001e;
+        public static final int main=0x7f030018;
+        public static final int music_list_layout=0x7f030019;
+        public static final int music_play=0x7f03001a;
+        public static final int my_activity_list=0x7f03001b;
+        public static final int picture_grid_child_item=0x7f03001c;
+        public static final int picture_grid_group_item=0x7f03001d;
+        public static final int picture_main=0x7f03001e;
+        public static final int picture_show_image_activity=0x7f03001f;
+        public static final int picture_take_main=0x7f030020;
+        public static final int support_simple_spinner_dropdown_item=0x7f030021;
+        public static final int video_listview=0x7f030022;
+        public static final int vidoe_file=0x7f030023;
     }
     public static final class menu {
         public static final int list=0x7f0c0000;

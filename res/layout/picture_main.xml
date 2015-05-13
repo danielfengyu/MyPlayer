@@ -1,0 +1,40 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <GridView
+        android:id="@+id/main_grid"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:listSelector="@android:color/transparent"
+        android:cacheColorHint="@android:color/transparent"
+        android:stretchMode="columnWidth"
+        android:horizontalSpacing="20dip"
+        android:gravity="center"
+        android:verticalSpacing="20dip"
+        android:columnWidth="90dip"
+        android:numColumns="2" >
+    </GridView>
+	<LinearLayout 
+			    android:id="@+id/take_picture_linearlayout"
+			    android:layout_width="fill_parent" 
+			    android:layout_height="60dp" 
+			    android:layout_alignParentBottom="true"
+			    android:background="#99ffffff">  
+     
+		      <ImageView 
+		          android:id="@+id/imageView1" 
+		          android:layout_width="80dp" 
+		          android:layout_height="match_parent" 
+		          android:src="@drawable/take_picture_default" 
+		          />  
+		          
+		        <ImageButton 
+		    	    android:id="@+id/button2" 
+		    	    android:layout_width="80dp" 
+		    	    android:layout_height="match_parent" 
+		    	    android:src="@drawable/photograph" 
+		    	    android:layout_marginLeft="200dp"/> 
+ 		</LinearLayout>
+</RelativeLayout>

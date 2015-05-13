@@ -10,7 +10,7 @@ import android.view.View;
 import android.widget.SimpleCursorAdapter;
 import android.widget.TextView;
 
-class MusicListAdapter extends SimpleCursorAdapter {
+public class MusicListAdapter extends SimpleCursorAdapter {
 	
 	
 	public MusicListAdapter(Context context, int layout, Cursor c,

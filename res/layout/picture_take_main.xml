@@ -1,0 +1,18 @@
+<LinearLayout 
+    android:id="@+id/take_picture_linearlayout"
+    android:layout_width="match_parent" 
+    android:layout_height="match_parent"  xmlns:android="http://schemas.android.com/apk/res/android">  
+     
+      <ImageView 
+          android:id="@+id/imageView1" 
+          android:layout_width="80dp" 
+          android:layout_height="140dp" 
+          android:src="@drawable/take_picture_default" 
+          android:layout_marginLeft="5dp"/>  
+          
+        <Button 
+    	    android:id="@+id/button2" 
+    	    android:layout_width="wrap_content" 
+    	    android:layout_height="wrap_content" 
+    	    android:text="拍照相片" /> 
+ </LinearLayout>

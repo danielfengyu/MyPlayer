@@ -33,6 +33,8 @@ public class MusicPlayActivity extends Activity {
 		 private ImageButton mPreviousButton=null;
 		 private ImageButton mNextButton=null;
 		 private TextView mTextTime=null;
+		 private TextView mTextMusicInfo=null;
+		 
 		 //广播消息
 	    protected BroadcastReceiver mPlayerEvtReceiver = new BroadcastReceiver() {
 	        @Override
@@ -54,23 +56,32 @@ public class MusicPlayActivity extends Activity {
 	 public void onCreate(Bundle savedInstanceState) {
 		 
 	        super.onCreate(savedInstanceState);
-	        setContentView(R.layout.musicplay);
+	        setContentView(R.layout.music_play);
 	        mPlayPauseButton = (ImageButton) findViewById(R.id.play_pause_btn);
 	        mStopButton = (ImageButton) findViewById(R.id.play_stop_btn);
 	        mPreviousButton = (ImageButton) findViewById(R.id.play_previous);
 	        mNextButton = (ImageButton) findViewById(R.id.play_next);
-	        
-	       
-	        String url;
+	        mTextMusicInfo=(TextView) findViewById(R.id.music_info);
+	       mTextTime=(TextView) findViewById(R.id.text_time);
+	        String url,musicinfo;
+	        long duration;
 	        Bundle bundle;
 	        bundle=getIntent().getExtras();
 			url=bundle.getString("filepath");
+			musicinfo=bundle.getString("musicinfo");
+			duration=bundle.getLong("duration");
 			
+			Log.i("fengyu","MusicPlayActivity"+musicinfo);
+			
+			mTextTime.setText(makeTimeString(duration));
+			mTextMusicInfo.setText(musicinfo);
 	        if(MusicList.mMusicPlayerService == null){
 	        	return;
 	        }
 	        MusicList.mMusicPlayerService.setDataSource(url);
 	        MusicList.mMusicPlayerService.start();
+	        
+	        
 	        
 	        /**
 	         * 上一首
@@ -83,9 +94,21 @@ public class MusicPlayActivity extends Activity {
 					//不是第一首，则跳到前一首
 					if(MusicList.mCursor.moveToPrevious())
 					{
+						//获取歌曲路径
 						 String url = MusicList.mCursor
 			                       .getString(MusicList.mCursor
 			                            .getColumnIndexOrThrow(MediaStore.Audio.Media.DATA));
+						 //获取歌曲的歌名和艺术家的名字
+						 String musicinfo=MusicList.mCursor
+					        		.getString(MusicList.mCursor
+					        				.getColumnIndexOrThrow(MediaStore.Audio.Media.TITLE))+"\n"+
+					        		MusicList.mCursor.getString(MusicList.mCursor
+					        				.getColumnIndexOrThrow(MediaStore.Audio.Media.ARTIST));
+						 //获取歌曲的时间
+						 long duration=MusicList.mCursor
+								 .getLong(MusicList.mCursor.getColumnIndexOrThrow(MediaStore.Audio.Media.DURATION));
+						 mTextTime.setText(makeTimeString(duration));
+						 mTextMusicInfo.setText(musicinfo);
 						 if(MusicList.mMusicPlayerService == null){
 					        	return;
 					        }
@@ -100,6 +123,15 @@ public class MusicPlayActivity extends Activity {
 						  String url = MusicList.mCursor
 			                       .getString(MusicList.mCursor
 			                            .getColumnIndexOrThrow(MediaStore.Audio.Media.DATA));
+							 String musicinfo=MusicList.mCursor
+						        		.getString(MusicList.mCursor
+						        				.getColumnIndexOrThrow(MediaStore.Audio.Media.TITLE))+"\n"+
+						        		MusicList.mCursor.getString(MusicList.mCursor
+						        				.getColumnIndexOrThrow(MediaStore.Audio.Media.ARTIST));
+							 long duration=MusicList.mCursor
+									 .getLong(MusicList.mCursor.getColumnIndexOrThrow(MediaStore.Audio.Media.DURATION));
+							 mTextTime.setText(makeTimeString(duration));
+							 mTextMusicInfo.setText(musicinfo);
 						 if(MusicList.mMusicPlayerService == null){
 					        	return;
 					        }
@@ -127,6 +159,15 @@ public class MusicPlayActivity extends Activity {
 						 String url = MusicList.mCursor
 			                       .getString(MusicList.mCursor
 			                            .getColumnIndexOrThrow(MediaStore.Audio.Media.DATA));
+						 String musicinfo=MusicList.mCursor
+					        		.getString(MusicList.mCursor
+					        				.getColumnIndexOrThrow(MediaStore.Audio.Media.TITLE))+"\n"+
+					        		MusicList.mCursor.getString(MusicList.mCursor
+					        				.getColumnIndexOrThrow(MediaStore.Audio.Media.ARTIST));
+						 long duration=MusicList.mCursor
+								 .getLong(MusicList.mCursor.getColumnIndexOrThrow(MediaStore.Audio.Media.DURATION));
+						 mTextTime.setText(makeTimeString(duration));
+						 mTextMusicInfo.setText(musicinfo);
 						 if(MusicList.mMusicPlayerService == null){
 					        	return;
 					        }
@@ -140,6 +181,15 @@ public class MusicPlayActivity extends Activity {
 						 String url = MusicList.mCursor
 			                       .getString(MusicList.mCursor
 			                            .getColumnIndexOrThrow(MediaStore.Audio.Media.DATA));
+						 String musicinfo=MusicList.mCursor
+					        		.getString(MusicList.mCursor
+					        				.getColumnIndexOrThrow(MediaStore.Audio.Media.TITLE))+"\n"+
+					        		MusicList.mCursor.getString(MusicList.mCursor
+					        				.getColumnIndexOrThrow(MediaStore.Audio.Media.ARTIST));
+						 long duration=MusicList.mCursor
+								 .getLong(MusicList.mCursor.getColumnIndexOrThrow(MediaStore.Audio.Media.DURATION));
+						 mTextTime.setText(makeTimeString(duration));
+						 mTextMusicInfo.setText(musicinfo);
 						 if(MusicList.mMusicPlayerService == null){
 					        	return;
 					        }
@@ -185,4 +235,17 @@ public class MusicPlayActivity extends Activity {
 	        filter.addAction(MusicPlayerService.PLAY_COMPLETED);
 	        registerReceiver(mPlayerEvtReceiver, filter);
 	 }
+	 
+	 /**
+	  * 把长整形时间转换为时间字符串
+	  */
+	 public static String makeTimeString(long milliSecs) {
+	        StringBuffer sb = new StringBuffer();
+	        long m = milliSecs / (60 * 1000);
+	        sb.append(m < 10 ? "0" + m : m);
+	        sb.append(":");
+	        long s = (milliSecs % (60 * 1000)) / 1000;
+	        sb.append(s < 10 ? "0" + s : s);
+	        return sb.toString();
+	    }
 }
